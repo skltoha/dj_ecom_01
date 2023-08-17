@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          {% for menu in menu_items %} {% if menu.parent_menu is null %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url menu.url %}">{{ menu.name }}</a>
+            {% if menu.menu_set.all %}
+            <ul>
+              {% for submenu in menu.menu_set.all %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url submenu.url %}">{{ submenu.name }}</a>
+                {% if submenu.menu_set.all %}
+                <ul>
+                  {% for subsubmenu in submenu.menu_set.all %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url subsubmenu.url %}">{{ subsubmenu.name }}</a>
+                  </li>
+                  <!-- Add more nested levels if needed -->
+                  {% endfor %}
+                </ul>
+                {% endif %} {% endfor %}
+              </li>
+            </ul>
+            {% endif %} {% endif %} {% endfor %}
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{% extends 'menu.html' %}
+
+{% block content %}
+<h1>electornics</h1>
+{% for x in product %}
+{{ x.title }}
+{% endfor %}
+
+{% endblock  %}

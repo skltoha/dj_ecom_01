@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "product.apps.ProductConfig",
     "user.apps.UserConfig",
+    "menu.apps.MenuConfig",
 ]
 
 MIDDLEWARE = [
@@ -54,9 +55,8 @@ MIDDLEWARE = [
 ]
 
 INTERNAL_IPS = [
-    # ...
     "127.0.0.1",
-    # ...
+    "0.0.0.0",
 ]
 
 ROOT_URLCONF = "ecom_main.urls"
