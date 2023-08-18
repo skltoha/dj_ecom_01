@@ -1,3 +1,11 @@
-{% extends 'menu.html' %} {% block content %}
-<h1>Hello world!</h1>
+{% extends 'menu.html' %} {% block content %} 
+{% for x in products %} 
+{{ x.title }}
+<br />
+{{ x.description }}
+<br />
+{{ x.price }}
+<br />
+<br />
+{% endfor %} 
 {% endblock %}

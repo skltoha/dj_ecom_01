@@ -23,6 +23,6 @@ from . import views
 urlpatterns = [
     path("admin/", admin.site.urls, name='admin'),
     path("", views.index, name='home'),
-    path("product/", views.electronics, name='product'),
+    path("product/<int:productlink>", views.product, name='product'),
     path("__debug__/", include("debug_toolbar.urls")),
 ]

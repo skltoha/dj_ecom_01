@@ -3,7 +3,6 @@ from menu import models as me
 from product import models as pp
 
 menu_item = me.menu.objects.all()
-product_item = pp.Product.objects.all()
 
 def index(request):
     context = {
@@ -11,9 +10,11 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
-def electronics(request):
+def product(request, productlink):
+    products = pp.Product.objects.filter(as_menu=productlink)
     context = {
         'menu_items': menu_item,
-        'product': product_item,
+        'product_link': productlink,
+        'products': products
     }
-    return render(request, 'electronics.html', context)
+    return render(request, 'index.html', context)
