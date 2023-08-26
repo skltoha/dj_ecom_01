@@ -24,6 +24,7 @@ class Product(models.Model):
     # collection = models.ForeignKey(Collection, on_delete=models.CASCADE)
     promotions = models.ManyToManyField(Promotion)
     as_menu = models.ForeignKey(menu, on_delete=models.SET_NULL, null=True)
+    image = models.ImageField(null=True, blank=True, upload_to='product/product_images/')
     
     
     def save(self, *args, **kwargs):
@@ -32,3 +33,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+    
+class ProductImage(models.Model):
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='product/product_images_collection/')

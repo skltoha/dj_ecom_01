@@ -20,17 +20,17 @@
           {% for menu in menu_items %} 
           {% if menu.parent_menu is null %}
           <li class="">
-            <a class="" href="{% url 'product' productlink=menu.id %}">{{ menu.name }}</a>
+            <a class="" href="{% url 'product:product' productlink=menu.id %}">{{ menu.name }}</a>
             {% if menu.menu_set.all %}
             <ul class="">
               {% for submenu in menu.menu_set.all %}
               <li class="">
-                <a class="" href="{% url 'product' productlink=submenu.id %}">{{ submenu.name }}</a>
+                <a class="" href="{% url 'product:product' productlink=submenu.id %}">{{ submenu.name }}</a>
                 {% if submenu.menu_set.all %}
                 <ul class="">
                   {% for subsubmenu in submenu.menu_set.all %}
                   <li class="">
-                    <a class="" href="{% url 'product' productlink=subsubmenu.id %}">{{ subsubmenu.name }}</a>
+                    <a class="" href="{% url 'product:product' productlink=subsubmenu.id %}">{{ subsubmenu.name }}</a>
                   </li>
                   <!-- Add more nested levels if needed -->
                   {% endfor %}

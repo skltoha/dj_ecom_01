@@ -39,7 +39,7 @@ li {
   text-decoration: none !important;
   color: var(--menu-txt-color) !important;
   text-transform: capitalize !important;
-  padding: 20px !important;
+  padding: 10px 20px !important;
   display: block !important;
 }
 
