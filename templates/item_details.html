@@ -1,0 +1,21 @@
+{% extends 'menu.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            {% for image in itemimg %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ item.title }}">
+            </div>
+        {% endfor %}
+        </div>
+      </div>
+
+      
+  <h3>{{ item.title }}</h3>
+  <p>{{ item.description }}</p>
+  <h4>{{ item.price }}</h4>
+</div>
+{% endblock %}

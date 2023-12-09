@@ -1,22 +1,14 @@
-{% extends 'menu.html' %}  {% load static %} {% block content %}
+{% extends 'menu.html' %} {% load static %} {% block content %}
 <div class="container">
-  {% for x in products %}
-  <img src="{{ x.image.url }}" alt="{{ x.title }}" style="width: 200px; margin-top: 20px" />
-
-  {% static x.image.url %}
-  <br />  
-  {{ x.image.url }}
-  <br />
-  {{ x.title }}
-  <br />
-  {{ x.description }}
-  <br />
-  {{ x.price }}
-  <br />
-  <br />
-  {% endfor %}
-  <br />
-
+  <div class="prod-items">
+    {% for x in products %}
+    <div class="prod-item">
+      <img src="{{ x.image.url }}" alt="{{ x.title }}" style="width: 200px; margin-top: 20px" />
+      <h3><a href="{% url 'product:productitem' product_slug=x.slug %}">{{ x.title }}</a></h3>
+      <h4>{{ x.price }}</h4>
+    </div>
+    {% endfor %}
+  </div>
   <nav aria-label="...">
     <ul class="pagination">
       {% if products.has_previous %}

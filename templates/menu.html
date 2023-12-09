@@ -17,8 +17,7 @@
     <nav class="nav-menu-bar">
       <div class="container">
         <ul class="navbar-menu">
-          {% for menu in menu_items %} 
-          {% if menu.parent_menu is null %}
+          {% for menu in menu_items %} {% if menu.parent_menu is null %}
           <li class="">
             <a class="" href="{% url 'product:product' productlink=menu.id %}">{{ menu.name }}</a>
             {% if menu.menu_set.all %}
@@ -40,8 +39,7 @@
             </ul>
             {% endif %}
           </li>
-          {% endif %}
-          {% endfor %}
+          {% endif %} {% endfor %}
         </ul>
       </div>
     </nav>
@@ -58,5 +56,7 @@
       integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
       crossorigin="anonymous"
     ></script>
+    <!-- Include Bootstrap JS at the end -->
+
   </body>
 </html>
